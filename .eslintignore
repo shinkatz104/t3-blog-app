@@ -1,0 +1,4 @@
+# .eslintignore
+tests/
+*.test.ts
+*.test.js
