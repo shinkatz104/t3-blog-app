@@ -5,6 +5,8 @@ import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
+import Header from "~/components/header";
+import Footer from "~/components/footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -28,7 +30,13 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </TRPCReactProvider>
       </body>
     </html>
   );

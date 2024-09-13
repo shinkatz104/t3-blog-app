@@ -15,15 +15,21 @@ datasource db {
 }
 
 model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
 
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
+	title       String
+  content     String?
+	image       String?
 
-    @@index([name])
+	published   Boolean  @default(false)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdById String
+
+  @@index([title])
 }
 
 // Necessary for Next auth
